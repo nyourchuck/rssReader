@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'feedjira'
+
 group :development, :test do
   gem 'factory_bot_rails'
   gem 'ffaker'

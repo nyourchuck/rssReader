@@ -1,7 +1,7 @@
 class RssReader extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { feeds: [] };
+    this.state = { feeds: [], feedEntries: [] };
     this.handleAdd = this.handleAdd.bind(this);
   }
 
@@ -17,7 +17,16 @@ class RssReader extends React.Component {
         application.setState({ feeds: data });
       },
       error: function(xhr, status, error) {
-        alert('Unable to retrieve API: ', error);
+        alert('Unable to retrieve feed data: ', error);
+      }
+    });
+    $.ajax({
+      url: '/api/feed_entries',
+      success: function(data) {
+        application.setState({ feedEntries: data });
+      },
+      error: function(xhr, status, error) {
+        alert('Unable to retrieve feed entries: ', error);
       }
     });
   }
@@ -42,6 +51,7 @@ class RssReader extends React.Component {
         <div className="row">
           <div className="col-md-12">
             <FeedTable feeds={this.state.feeds} />
+            <FeedEntryTable feedEntries={this.state.feedEntries} />
           </div>
         </div>
       </div>

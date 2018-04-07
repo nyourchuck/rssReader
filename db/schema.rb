@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180405183759) do
+ActiveRecord::Schema.define(version: 20180406183916) do
+
+  create_table "feed_entries", force: :cascade do |t|
+    t.integer "feed_id"
+    t.string "title"
+    t.datetime "published"
+    t.text "summary"
+    t.string "url"
+    t.string "author"
+    t.boolean "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "feeds", force: :cascade do |t|
     t.string "title"
