@@ -5,9 +5,6 @@ class FeedForm extends React.Component {
       title: '',
       url: '',
       description: ''
-//      title: props.feed.title,
- //     url: props.feed.url,
-  //    description: props.feed.url
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -84,7 +81,7 @@ class FeedForm extends React.Component {
           />
         </div>
 
-        <input type="submit" value="Add Feed" />
+        <input type="submit" value="Add Feed" className="btn btn-primary" />
       </form>
     );
   }

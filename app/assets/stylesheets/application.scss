@@ -16,7 +16,16 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
  
 .container {
   margin-top: -20px;
+}
+
+.btn {
+  margin: 6px 0px 6px 8px;
+}
+
+a.fa {
+  text-decoration: none;
 }

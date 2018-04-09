@@ -1,5 +1,7 @@
 module Api
   class FeedsController < ApplicationController
+    before_action :set_feed, only: [:update, :destroy]
+
     def index
       render json: Feed.all
     end
@@ -13,7 +15,25 @@ module Api
       end
     end
 
+    def update
+      if @feed.update(feed_params)
+        render json: @feed
+      else
+        render nothing: true, status: :unprocessable_entity
+      end
+    end
+
+    def destroy
+      @feed.destroy
+      head :no_content
+    end
+
+
     private
+    def set_feed
+      @feed = Feed.find(params[:id])
+    end
+
 
     def feed_params
       params.require(:feed).permit(:url, :description, :title)

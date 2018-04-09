@@ -7,7 +7,7 @@ class  FeedEntry extends React.Component {
   render() {
     return(
       <tr>
-        <td><Link to={this.state.url}>{this.state.title}</Link></td>
+        <td><a href={this.state.url}>{this.state.title}</a></td>
         <td>{this.state.published}</td>
         <td>{this.state.author}</td>
       </tr>
