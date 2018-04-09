@@ -65,7 +65,7 @@ class RssReader extends React.Component {
             <button className="btn btn-primary" onClick={this.viewArticles}>View Articles</button>
           </p>
         </div>
-        <div id="feedContainer">
+        <div id="feedContainer" style={{display: 'none'}}>
           <div className="row">
             <div className="col-md-12">
               <FeedForm handleAdd={this.handleAddFeed} />

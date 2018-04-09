@@ -22,7 +22,7 @@ class  FeedTable extends React.Component {
       <table className="table table-striped">
         <thead>
           <tr>
-            <th className="col-md-4">Title</th>
+            <th className="col-md-4">Feed Title</th>
             <th className="col-md-6">Description</th>
             <th className="col-md-2">Actions</th>
 

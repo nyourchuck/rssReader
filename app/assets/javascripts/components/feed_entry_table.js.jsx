@@ -6,17 +6,15 @@ class  FeedEntryTable extends React.Component {
     }.bind(this));
 
     return(
-      <table className="table table-striped">
+      <table id="feedEntryTable" className="table">
         <thead>
           <tr>
-            <th className="col-md-4">Title</th>
-            <th className="col-md-3">Date</th>
-            <th className="col-md-3">Author</th>
+            <th>Article Title</th>
+            <th>Date</th>
+            <th>Author</th>
           </tr>
         </thead>
-        <tbody>
-          {feedEntries}
-        </tbody>
+        {feedEntries}
       </table>
     )
   }
