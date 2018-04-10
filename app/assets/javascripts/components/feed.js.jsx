@@ -89,7 +89,7 @@ class Feed extends React.Component {
 
   renderForm() {
     return(
-      <tr>
+      <tr className="editFeedEntryForm">
         <td>
           <input name="title"
                  defaultValue={this.state.title}
@@ -113,14 +113,14 @@ class Feed extends React.Component {
           />
         </td>
         <td>
-          <a className="btn btn-success btn-sm"
+          <button className="btn btn-success btn-sm"
              onClick={this.handleUpdate}>
             Save
-          </a>
-          <a className="btn btn-default btn-sm"
+          </button>
+          <button className="btn btn-default btn-sm"
              onClick={this.toggleEdit} >
             Cancel
-          </a>
+          </button>
         </td>
       </tr>
     );

@@ -47,7 +47,7 @@ class FeedForm extends React.Component {
 
   render() {
     return (
-      <form className="form-inline" onSubmit={this.handleAdd}>
+      <form id="newFeedForm" className="form-inline" onSubmit={this.handleAdd}>
         <div className="form-group">
           <input
             className="form-group"
@@ -81,7 +81,7 @@ class FeedForm extends React.Component {
           />
         </div>
 
-        <input type="submit" value="Add Feed" className="btn btn-primary" />
+        <button className="btn btn-primary">Add Feed</button>
       </form>
     );
   }

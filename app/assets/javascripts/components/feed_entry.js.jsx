@@ -40,7 +40,7 @@ class  FeedEntry extends React.Component {
           <td>
             <span className="feedEntryActions">
               <a className="hiddenSummary fa fa-plus-square-o" onClick={this.showSummary} />
-              <a className="visibleSummary fa fa-minus-square-o" onClick={this.hideSummary} />
+              <a className="visibleSummary fa fa-minus-square-o" onClick={this.hideSummary} style={{display: 'none'}}/>
               &nbsp;
               <a className="fa fa-check" onClick={this.markAsRead} />
             </span>

@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'feedjira'
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
   gem 'ffaker'
@@ -47,6 +48,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'geckodriver-helper'
+  gem 'cucumber-rails', require: false
 end
 
 group :development do
