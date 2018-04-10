@@ -11,10 +11,27 @@ RSpec.describe Api::FeedEntriesController, type: :controller do
       feed_entry.save!  
     end
 
-    it "returns @feeds" do
+    it "returns feed_entries" do
       get :index, { }
       expect(parsed_response.first[:title]).to eq 'AA'
     end
+
+  end
+
+  describe "PUT #sync" do
+
+    it "syncs feeds" do
+      expect(Feed).to receive(:sync_all).and_return(true)
+      put :sync, { }
+    end
+
+    it "returns feed_entries" do
+      allow(Feed).to receive(:sync_all).and_return(true)
+      feed_entry.save!  
+      put :sync, { }
+      expect(parsed_response.first[:title]).to eq 'AA'
+    end
+
   end
 
   describe "PUT #update" do

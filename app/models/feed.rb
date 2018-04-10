@@ -8,4 +8,22 @@ class Feed < ApplicationRecord
       local_entry.update_attributes(summary: entry.summary, author: entry.author, url: entry.url, published: entry.published)
     end
   end
+
+  def self.sync_all
+    Feed.all.each do |feed|
+      Rails.logger.info "Syncing: #{feed.url} (#{feed.title})"
+      begin
+        feed.sync
+        feed.update_attributes(
+          status: :success,
+          status_details: "Synced at #{Time.now}"
+        )
+      rescue StandardError => error
+        feed.update_attributes(
+          status: :error,
+          status_details: "#{error.message} at #{Time.now}"
+        )
+      end
+    end
+  end    
 end

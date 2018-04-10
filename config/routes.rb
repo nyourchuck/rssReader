@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   namespace :api do
-    resources :feed_entries
+    resources :feed_entries do
+      collection do
+        put 'sync'
+      end
+    end
     resources :feeds, only: [:index, :create, :update, :destroy]
   end
   root 'dashboard#index'

@@ -4,6 +4,8 @@ class RssReader extends React.Component {
     this.state = { feeds: [], feedEntries: [] };
     this.handleAddFeed = this.handleAddFeed.bind(this);
     this.handleDeleteFeed = this.handleDeleteFeed.bind(this);
+    this.syncArticles = this.syncArticles.bind(this);
+    this.updateFeeds = this.updateFeeds.bind(this);
   }
 
   componentDidMount() {
@@ -11,23 +13,45 @@ class RssReader extends React.Component {
   }
 
   loadDataFromApi() {
-    var application = this;
+    this.updateFeeds(); 
+    $.ajax({
+      url: '/api/feed_entries',
+      success: function(data) {
+        this.setState({ feedEntries: data });
+      }.bind(this),
+      error: function(xhr, status, error) {
+        alert('Unable to retrieve feed entries: ', error);
+      }
+    });
+  }
+
+  updateFeeds() {
     $.ajax({
       url: '/api/feeds',
       success: function(data) {
-        application.setState({ feeds: data });
-      },
+        this.setState({ feeds: [] });
+        this.setState({ feeds: data });
+      }.bind(this),
       error: function(xhr, status, error) {
         alert('Unable to retrieve feed data: ', error);
       }
     });
+  }
+
+  syncArticles() {
+    $("#syncSpinner").show();
     $.ajax({
-      url: '/api/feed_entries',
+      method: 'PUT',
+      url: '/api/feed_entries/sync',
       success: function(data) {
-        application.setState({ feedEntries: data });
-      },
+        this.setState({ feedEntries: [] });
+        this.setState({ feedEntries: data });
+        this.updateFeeds();
+        $("#syncSpinner").hide();
+      }.bind(this),
       error: function(xhr, status, error) {
-        alert('Unable to retrieve feed entries: ', error);
+        alert('Cannot sync records: ', error);
+        $("#syncSpinner").hide();
       }
     });
   }
@@ -63,6 +87,10 @@ class RssReader extends React.Component {
           <p>
             <button className="btn btn-primary" onClick={this.manageFeeds}>Manage Feeds</button>
             <button className="btn btn-primary" onClick={this.viewArticles}>View Articles</button>
+            <button className="btn btn-primary" onClick={this.syncArticles}>
+              Sync Feeds
+              <i id="syncSpinner" className="fa fa-spinner fa-spin" style={{ display: 'none'}}/>
+            </button>
           </p>
         </div>
         <div id="feedContainer" style={{display: 'none'}}>

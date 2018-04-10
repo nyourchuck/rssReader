@@ -38,4 +38,24 @@ RSpec.describe Feed, type: :model do
     end
 
   end
+
+  describe "sync_all" do
+    before(:each) do
+      Timecop.freeze
+    end
+
+    it "updates record with sync time" do
+      allow(Feedjira::Feed).to receive(:fetch_and_parse).and_return([])
+      subject.save!
+      Feed.sync_all
+      expect(subject.reload.status_details).to eq "Synced at #{Time.now}"
+    end
+
+    it "updates record with sync time" do
+      allow(Feedjira::Feed).to receive(:fetch_and_parse) { raise 'ERROR' }
+      subject.save!
+      Feed.sync_all
+      expect(subject.reload.status_details).to eq "ERROR at #{Time.now}"
+    end
+  end
 end

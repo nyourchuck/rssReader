@@ -28,7 +28,6 @@ module Api
       head :no_content
     end
 
-
     private
     def set_feed
       @feed = Feed.find(params[:id])

@@ -15,6 +15,11 @@ module Api
 
     end
 
+    def sync
+      Feed.sync_all
+      index
+    end
+
     private
     def set_feed_entry
       @feed_entry = FeedEntry.find(params[:id])

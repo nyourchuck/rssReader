@@ -41,3 +41,18 @@ a.fa {
   }
 
 }
+
+#syncSpinner {
+  margin-left: 1em;
+}
+
+.feedTitle {
+  .success {
+    font-size: small;
+    color: green;
+  }
+  .error {
+    font-size: small;
+    color: red;
+  }
+}  

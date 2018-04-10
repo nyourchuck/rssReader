@@ -76,7 +76,12 @@ class Feed extends React.Component {
   renderRecord() {
     return(
       <tr>
-        <td><a href={this.state.url}>{this.state.title}</a></td>
+        <td className="feedTitle">
+          <a href={this.state.url}>{this.state.title}</a>
+          <p className={this.state.status}>
+            {this.state.status_details}
+          </p>
+        </td>
         <td>{this.state.description}</td>
         <td>
           <a className="fa fa-trash" onClick={this.handleDelete} />
