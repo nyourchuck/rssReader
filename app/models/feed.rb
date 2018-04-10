@@ -5,7 +5,8 @@ class Feed < ApplicationRecord
     content = Feedjira::Feed.fetch_and_parse url
     content.entries.each do |entry|
       local_entry = feed_entries.where(title: entry.title).first_or_initialize
-      local_entry.update_attributes(summary: entry.summary, author: entry.author, url: entry.url, published: entry.published)
+      author = ActionController::Base.helpers.strip_links entry.author
+      local_entry.update_attributes(summary: entry.summary, author: author, url: entry.url, published: entry.published)
     end
   end
 

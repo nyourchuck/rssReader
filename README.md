@@ -1,24 +1,29 @@
-# README
+# Rss Reader
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+```
+rake db:drop db:create db:schema:load db:seed
+rake sync:feeds
+```
 
-* Ruby version
+## Running
+```
+rails server
+```
+Open reader at `http://localhost:3000` or other url you have configured for local servers.
 
-* System dependencies
+The UI contains a button to sync rss feeds, but you can also run `rake sync:feeds` at any time. After a server-side sync you may need to refresh the browser as there is no polling implemented.
 
-* Configuration
+## Testing
 
-* Database creation
+Server code uses rspec for testing. UI tested with cucumber.
+```
+rspec
+cucumber
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+After running tests code coverage is available via
+```
+open coverage\index.html
+```

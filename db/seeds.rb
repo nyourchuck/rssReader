@@ -7,6 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Feed.create(
+  title: "Programmable Web",
+  url: "http://feeds.feedburner.com/ProgrammableWeb",
+  description: "Programmable Web"
+)
+
+Feed.create(
   title: "Hacker News",
   url: "https://hnrss.org/frontpage",
   description: "Hacker News RSS"
