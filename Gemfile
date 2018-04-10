@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'feedjira'
 
 group :development, :test do
+  gem 'rails-controller-testing'
   gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'pry-rails'

@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :feed_entry do
-    feed_id 1
     title "MyString"
     published "2018-04-06 13:39:16"
-    content "MyText"
+    summary "My Summary"
     url "MyString"
     author "MyString"
     read false
+    association :feed, factory: :feed, strategy: :build
   end
 end

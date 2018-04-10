@@ -11,7 +11,7 @@ module Api
       if feed.save
         render json: feed
       else
-        render nothing: true, status: :bad_request
+        head :bad_request, content_type: "text/json"
       end
     end
 
@@ -19,7 +19,7 @@ module Api
       if @feed.update(feed_params)
         render json: @feed
       else
-        render nothing: true, status: :unprocessable_entity
+        head :unprocessable_entity, content_type: "text/json"
       end
     end
 

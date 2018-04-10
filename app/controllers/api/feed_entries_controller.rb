@@ -10,7 +10,7 @@ module Api
       if @feed_entry.update(feed_entry_params)
         render json: @feed_entry
       else
-        render nothing: true, status: :unprocessable_entity
+        head :unprocessable_entity
       end
 
     end
